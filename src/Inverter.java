@@ -1,6 +1,3 @@
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-
 public class Inverter {
     private Wire in;
     private Wire out;
