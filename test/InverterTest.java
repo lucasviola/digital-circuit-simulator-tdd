@@ -1,3 +1,4 @@
+import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -37,7 +38,15 @@ public class InverterTest {
 
         assertThat(result, is(true));
     }
-
-
-
+//
+//    @Test
+//    public void shouldInvertSignalTwice() throws Exception {
+//        in.setSignal(true);
+//        inverter = new Inverter(in, out);
+//        assertThat(out.getSignal(), is(false));
+//
+//        in.setSignal(false);
+//        assertThat(out.getSignal(), is(true));
+//
+//    }
 }
