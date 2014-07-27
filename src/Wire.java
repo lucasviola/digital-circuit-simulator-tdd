@@ -15,7 +15,4 @@ public class Wire {
         return this.signal;
     }
 
-    public void addChangeListener(ChangeListener changeListener) {
-
-    }
 }

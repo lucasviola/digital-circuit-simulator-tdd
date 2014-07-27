@@ -37,16 +37,42 @@ public class InverterTest {
         boolean result = out.getSignal();
 
         assertThat(result, is(true));
+
+
     }
-//
-//    @Test
-//    public void shouldInvertSignalTwice() throws Exception {
-//        in.setSignal(true);
-//        inverter = new Inverter(in, out);
-//        assertThat(out.getSignal(), is(false));
-//
-//        in.setSignal(false);
-//        assertThat(out.getSignal(), is(true));
-//
-//    }
+
+    @Test
+    public void shouldInvertSignalTwice() throws Exception {
+        in.setSignal(true);
+        inverter = new Inverter(in, out);
+        boolean result = out.getSignal();
+
+        assertThat(result, is(false));
+
+        in.setSignal(false);
+        inverter.setIn(in);
+        boolean secondResult = out.getSignal();
+
+        assertThat(secondResult, is(true));
+    }
+
+    @Test
+    public void shouldInvertSignalThreeTimes() throws Exception {
+        in.setSignal(false);
+        inverter = new Inverter(in, out);
+        boolean firstResult = out.getSignal();
+        assertThat(firstResult, is(true));
+
+        in.setSignal(true);
+        inverter.setIn(in);
+        boolean secondResult = out.getSignal();
+        assertThat(secondResult, is(false));
+
+        in.setSignal(false);
+        inverter.setIn(in);
+        boolean thirdResult = out.getSignal();
+        assertThat(thirdResult, is(true));
+
+
+    }
 }

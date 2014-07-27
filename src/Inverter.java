@@ -3,15 +3,16 @@ public class Inverter {
     private Wire out;
 
     public Inverter(Wire in, Wire out) {
-        this.in = in;
         this.out = out;
-        invert();
+        setIn(in);
     }
 
     private void invert(){
         out.setSignal(!in.getSignal());
     }
 
-
-
+    public void setIn(Wire in) {
+        this.in = in;
+        invert();
+    }
 }
