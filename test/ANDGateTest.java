@@ -47,4 +47,34 @@ public class ANDGateTest {
 
         assertThat(result, is(true));
     }
+
+    @Test
+    public void changingStateTwice() throws Exception {
+        aIn.setSignal(true);
+        bIn.setSignal(true);
+        gate = new ANDGate(aIn, bIn, out);
+        boolean firstResult = out.getSignal();
+        assertThat(firstResult, is(true));
+
+        bIn.setSignal(false);
+        gate.setbIn(bIn);
+        boolean secondResult = out.getSignal();
+        assertThat(secondResult, is(false));
+
+    }
+
+    @Test
+    public void changingStateThreeTimes() throws Exception {
+        aIn.setSignal(false);
+        bIn.setSignal(true);
+        gate = new ANDGate(aIn, bIn, out);
+        boolean firstResult = out.getSignal();
+        assertThat(firstResult, is(false));
+
+        aIn.setSignal(true);
+        gate.setaIn(aIn);
+        boolean secondResult = out.getSignal();
+        assertThat(secondResult, is(true));
+
+    }
 }
