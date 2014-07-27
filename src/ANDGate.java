@@ -15,21 +15,17 @@ public class ANDGate {
     private void changeState(){
         if(aIn.getSignal() && bIn.getSignal())
             out.setSignal(true);
+        else
+            out.setSignal(false);
     }
 
     public void setaIn(Wire aIn) {
         this.aIn = aIn;
-        if(aIn.getSignal() && bIn.getSignal())
-            out.setSignal(true);
-        else
-            out.setSignal(false);
+        changeState();
     }
 
     public void setbIn(Wire bIn) {
         this.bIn = bIn;
-        if(aIn.getSignal() && bIn.getSignal())
-            out.setSignal(true);
-        else
-            out.setSignal(false);
+        changeState();
     }
 }

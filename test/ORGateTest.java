@@ -1,3 +1,4 @@
+import com.sun.swing.internal.plaf.basic.resources.basic_it;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -47,5 +48,36 @@ public class ORGateTest {
         boolean result = out.getSignal();
 
         assertThat(result, is(true));
+    }
+
+    @Test
+    public void shouldChangeStateTwice() throws Exception {
+        ORGate gate = new ORGate(aIn, bIn, out);
+        boolean result = out.getSignal();
+        assertThat(result, is(false));
+
+        aIn.setSignal(true);
+        gate.setaIn(aIn);
+        boolean secondResult = out.getSignal();
+        assertThat(secondResult, is(true));
+    }
+
+    @Test
+    public void shouldChangeStateThreeTimes() throws Exception {
+        ORGate gate = new ORGate(aIn, bIn, out);
+        boolean result = out.getSignal();
+        assertThat(result, is(false));
+
+        bIn.setSignal(true);
+        gate.setbIn(bIn);
+        boolean secondResult = out.getSignal();
+        assertThat(secondResult, is(true));
+
+        aIn.setSignal(false);
+        bIn.setSignal(false);
+        gate.setaIn(aIn);
+        gate.setbIn(bIn);
+        boolean thirdResult = out.getSignal();
+        assertThat(thirdResult, is(false));
     }
 }

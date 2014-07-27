@@ -7,12 +7,24 @@ public class ORGate {
         this.aIn = aIn;
         this.bIn = bIn;
         this.out = out;
-        process();
+        changeState();
     }
 
 
-    public void process(){
+    public void changeState(){
         if(aIn.getSignal() || bIn.getSignal())
             out.setSignal(true);
+        else
+            out.setSignal(false);
+    }
+
+    public void setaIn(Wire aIn) {
+        this.aIn = aIn;
+        changeState();
+    }
+
+    public void setbIn(Wire bIn) {
+        this.bIn = bIn;
+        changeState();
     }
 }
